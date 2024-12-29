@@ -1,0 +1,19 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Define a bean-->
+    <bean id="dev" class="com.example.demo.Dev">
+               <!-- Name attribute tells the variable name -->
+        <property name="laptop" ref="lap1"/>
+        <!-- <property name="age" value="18"/> -->
+        <!-- <constructor-arg name="age" value="12"/> -->
+        <!-- <constructor-arg index="0" value="19"/> -->
+        <constructor-arg value="10"/>
+    </bean> 
+    <!--When Spring loads and instantiates all the beans defined in the XML configuration file when the ApplicationContext is initialized, regardless of whether those beans are used later. so we used lazy-init Mark the Laptop bean as lazy, so it will only be initialized when it's accessed for the first time. -->
+    <bean id="lap1" class="com.example.demo.Laptop" lazy-init="true"></bean>
+</beans>
+
