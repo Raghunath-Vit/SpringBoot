@@ -5,15 +5,27 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- Define a bean-->
-    <bean id="dev" class="com.example.demo.Dev">
+    <!-- Since autowire is set to byName so it will match the variable name with the bean id if matches it connects them -->
+    <!-- <bean id="dev" class="com.example.demo.Dev" autowire="byName"> -->
+
+    <!-- In case of autowire byType it matches the variable type and the class which implementing that type. In our case our Type is Computer and both laptop and desktop implementing Computer interface then it will find two beans of type computer so we can pass primary="true" parameters to anyone to tell if any conflict arise use this bean. -->
+    <bean id="dev" class="com.example.demo.Dev" autowire="byType">
                <!-- Name attribute tells the variable name -->
-        <property name="laptop" ref="lap1"/>
+        <!-- <property name="laptop" ref="lap1"/> -->
+        <!-- <property name="com" ref="lap1"/> -->
         <!-- <property name="age" value="18"/> -->
         <!-- <constructor-arg name="age" value="12"/> -->
         <!-- <constructor-arg index="0" value="19"/> -->
-        <constructor-arg value="10"/>
+        <!-- <constructor-arg value="10"/> -->
     </bean> 
+    <!-- Since autowire is set to byName so it will match the variable name with the bean id if matches it connects them -->
+    <bean id="com" class="com.example.demo.Laptop" lazy-init="true"></bean>
+
+
+
+
     <!--When Spring loads and instantiates all the beans defined in the XML configuration file when the ApplicationContext is initialized, regardless of whether those beans are used later. so we used lazy-init Mark the Laptop bean as lazy, so it will only be initialized when it's accessed for the first time. -->
     <bean id="lap1" class="com.example.demo.Laptop" lazy-init="true"></bean>
+    <bean id="com1 " class="com.example.demo.Desktop" primary="true"></bean>
 </beans>
 

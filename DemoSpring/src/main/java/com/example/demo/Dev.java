@@ -2,7 +2,11 @@ package com.example.demo;
 
 public class Dev {
 
-    private Laptop laptop;
+    // private Laptop laptop;
+
+    // This is for autowiring in Spring interface.
+
+    private Computer com;
 
     private int age;
 
@@ -26,17 +30,26 @@ public class Dev {
         this.age = age;
     }
 
-    public Laptop getLaptop() {
-        return laptop;
+    // public Laptop getLaptop() {
+    // return laptop;
+    // }
+
+    // public void setLaptop(Laptop laptop) {
+    // this.laptop = laptop;
+    // }
+
+    public void setCom(Computer com) {
+        this.com = com;
     }
 
-    public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
+    public Computer getCom() {
+        return com;
     }
 
     public void build() {
         System.out.println("Working on awesome project");
-        laptop.compile();
+        // laptop.compile();
+        com.compile();
 
     }
 
